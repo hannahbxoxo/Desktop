@@ -1,13 +1,12 @@
 var baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 var maxPokemonId = 1025;
 
-// Called when the page loads and when the "Generate" button is clicked
 function getRandomPokemon() {
 let randomId = Math.floor(Math.random() * maxPokemonId) + 1;
 fetchData(randomId);
 }
 
-// Called when the "Search" button is clicked
+
 function searchPokemon() {
 let searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
 if (searchValue === "") {
@@ -19,10 +18,10 @@ fetchData(searchValue);
 
 function fetchData(nameOrId) {
 let url = `${baseUrl}${nameOrId}`;
-// Use fetch() to make the request to the API
+
 fetch(url)
 .then((response) => {
-// If the Pokémon does not exist, the API answers with an error (404)
+
 if (!response.ok) {
 throw new Error("Pokémon not found");
 }
@@ -35,7 +34,7 @@ displayNotFound(nameOrId);
 });
 }
 
-// Map the provider's format onto the fields displayResult() expects
+
 function toPokemon(pokemon) {
 return {
 id: pokemon.id,
