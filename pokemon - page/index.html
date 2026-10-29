@@ -1,56 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokédex Explorer</title>
-  <!-- Connects the CSS file (styling) -->
+  <script src="script.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <!-- HEADER: title + search bar -->
-  <header>
-    <h1>Pokédex Explorer</h1>
+<body onload="getRandomPokemon()">
 
-    <!-- A <form> lets the user press Enter OR click the button to search -->
-    <form id="search-form">
-      <input
-        id="search-input"
-        type="text"
-        placeholder="Name or number, e.g. pikachu or 25"
-        autocomplete="off"
-      >
-      <button type="submit">Search</button>
-    </form>
-  </header>
+  <h1>Pokémon Page</h1>
 
-  <main>
-    <!-- WELCOME TEXT: explains what the page does -->
-    <section class="welcome">
-      <h2>Welcome!</h2>
-      <p>
-        This page shows you information about Pokémon using the free PokéAPI.
-        Every time you open or refresh the page, a random Pokémon appears.
-        Click the button below to get a new one, or use the search bar
-        to find a specific Pokémon by its name or number.
-      </p>
-    </section>
+  <p id="welcomeText">
+    Welcome! This page uses the PokéAPI to show you information about Pokémon.
+    Every time you refresh the page, a random Pokémon is shown.
+    Click "Generate another Pokémon" to see a new one, or search for a Pokémon by its name or number.
+  </p>
 
-    <!-- Error / info messages appear here (e.g. "not found") -->
-    <p id="message" class="message"></p>
+  <form id="searchForm" action="" onsubmit="searchPokemon(); return false;">
+    <label for="searchInput">Search for a Pokémon:</label>
+    <input type="text" id="searchInput">
+    <input type="button" value="Search" onclick="searchPokemon()">
+  </form>
 
-    <!-- The Pokémon card is inserted here by JavaScript -->
-    <div id="card-container"></div>
+  <br><br>
 
-    <!-- REGENERATE BUTTON -->
-    <button id="regenerate-btn" class="regenerate-btn">
-      Show another random Pokémon
-    </button>
-  </main>
+  <div id="pokemonCard"></div>
 
-  <!-- Connects the JavaScript file. It's at the bottom so the HTML
-       above already exists when the script runs. -->
-  <script src="script.js"></script>
+  <br>
+
+  <input type="button" value="Generate another Pokémon" onclick="getRandomPokemon()">
+
 </body>
+
 </html>
